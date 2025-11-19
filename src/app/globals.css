@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-oldenglish {
+  font-family: 'UnifrakturMaguntia', cursive;
+}
+
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Ignitia 2k25 - Cyberpunk Indian Fusion Theme */
+    
+    /* Backgrounds - Deep cosmic purples and blacks */
+    --background: 280 60% 5%;  /* Deep midnight purple #0c0018 */
+    --background-secondary: 270 50% 8%;  /* Dark indigo */
+    --background-tertiary: 0 0% 5%;  /* Matte black */
+    --foreground: 45 100% 95%;  /* Soft gold white */
+
+    /* Gold System - Metallic and gradient golds */
+    --gold: 45 100% 70%;  /* Metallic gold #FFD56B */
+    --gold-light: 45 100% 80%;  /* Light gold */
+    --gold-dark: 40 90% 50%;  /* Deep gold */
+    --gold-glow: 45 100% 70%;  /* For glow effects */
+
+    /* Neon Accents - Cyan, Magenta, Pink */
+    --neon-cyan: 180 100% 50%;  /* Electric cyan #00FFF6 */
+    --neon-magenta: 320 100% 50%;  /* Magenta #FF007F */
+    --neon-pink: 330 100% 60%;  /* Electric pink */
+    --neon-violet: 270 80% 60%;  /* Soft violet */
+
+    /* Component Colors */
+    --card: 280 50% 10%;
+    --card-foreground: 45 90% 90%;
+
+    --popover: 280 50% 10%;
+    --popover-foreground: 45 90% 90%;
+
+    --primary: 45 100% 70%;  /* Gold */
+    --primary-foreground: 280 60% 10%;
+
+    --secondary: 280 40% 15%;
+    --secondary-foreground: 45 90% 85%;
+
+    --muted: 280 30% 20%;
+    --muted-foreground: 45 50% 60%;
+
+    --accent: 180 100% 50%;  /* Neon cyan */
+    --accent-foreground: 280 60% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 280 40% 20%;
+    --input: 280 40% 15%;
+    --ring: 45 100% 70%;  /* Gold ring */
+
+    --radius: 0.75rem;
+
+    /* Custom Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(45 100% 60%), hsl(45 100% 80%));
+    --gradient-neon: linear-gradient(135deg, hsl(180 100% 50%), hsl(320 100% 50%));
+    --gradient-cyber: linear-gradient(180deg, hsl(280 60% 5%), hsl(280 40% 10%));
+    
+    /* Shadows and Glows */
+    --shadow-gold: 0 0 30px hsl(45 100% 60% / 0.3);
+    --shadow-neon-cyan: 0 0 20px hsl(180 100% 50% / 0.5);
+    --shadow-neon-pink: 0 0 20px hsl(330 100% 60% / 0.5);
+    --glow-gold: 0 0 40px hsl(45 100% 70% / 0.4), 0 0 80px hsl(45 100% 70% / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  /* Gold Gradient Text */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, hsl(45 100% 60%), hsl(45 100% 85%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Neon Glow Effects */
+  .glow-gold {
+    box-shadow: var(--glow-gold);
+  }
+
+  .glow-cyan {
+    box-shadow: var(--shadow-neon-cyan);
+  }
+
+  .glow-pink {
+    box-shadow: var(--shadow-neon-pink);
+  }
+
+  /* Hexagon Clip Path */
+  .hexagon {
+    clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+  }
+
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+  }
+
+  /* Particle Background */
+  .particle-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .particle-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(2px 2px at 20% 30%, hsl(45 100% 70% / 0.3), transparent),
+      radial-gradient(2px 2px at 60% 70%, hsl(180 100% 50% / 0.3), transparent),
+      radial-gradient(1px 1px at 50% 50%, hsl(330 100% 60% / 0.3), transparent),
+      radial-gradient(2px 2px at 80% 10%, hsl(45 100% 70% / 0.3), transparent);
+    background-size: 200% 200%;
+    animation: particle-float 15s ease-in-out infinite;
+  }
+
+  /* Neon Border */
+  .neon-border {
+    border: 2px solid transparent;
+    background: linear-gradient(hsl(280 50% 10%), hsl(280 50% 10%)) padding-box,
+                linear-gradient(135deg, hsl(180 100% 50%), hsl(320 100% 50%)) border-box;
+  }
+
+  .gold-border {
+    border: 2px solid hsl(45 100% 70% / 0.5);
+    box-shadow: 0 0 15px hsl(45 100% 70% / 0.3);
+  }
+}
+
+@layer components {
+  /* Hex Button */
+  .hex-button {
+    @apply relative overflow-hidden;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+    transition: var(--transition-smooth);
+  }
+
+  .hex-button:hover {
+    transform: rotate(15deg) scale(1.1);
+    box-shadow: var(--glow-gold);
+  }
+
+  /* Mandala Watermark */
+  .mandala-watermark {
+    position: relative;
+  }
+
+  .mandala-watermark::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: url('/mandala-pattern.svg') center/contain no-repeat;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(45 100% 70% / 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(45 100% 70% / 0.6), 0 0 60px hsl(45 100% 70% / 0.3);
+  }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes particle-float {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+
+/* Legacy App.css content */
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+.Navbar_registerBtn__KrBbf {
+    max-height: 100px;
+    max-width: auto;
+    background: transparent !important;
+    cursor: pointer;
+    transition: transform .2s 
+ease;
+}
+.register-img {
+  background: transparent !important;
+  display: block;
+  mix-blend-mode: normal;
+}
+.Navbar_registerBtn__KrBbf {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.register-img {
+  height: 55px !important;
+  width: auto;
+  object-fit: contain;
+}
+@keyframes rotate-slow-a {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+ .animate-rotate-slow-a {
+    animation: rotate-slow-a 20s linear infinite;
+  }
