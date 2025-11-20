@@ -176,11 +176,11 @@ const Events = () => {
       : categoryFiltered.filter((event) => event.dateLabel === activeDate);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <Navigation />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 particle-bg">
+      <section className="relative pt-32  particle-bg">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Explore Events"
@@ -190,7 +190,7 @@ const Events = () => {
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-background-secondary md:sticky md:top-20 z-30 border-b border-gold/20">
+      <section className="pb-8 bg-background-secondary md:sticky md:top-20 z-30 border-b border-gold/20">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (

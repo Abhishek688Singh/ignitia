@@ -57,7 +57,7 @@ export const Navigation = () => {
             <img
               src="/qw.png"
               alt="Register"
-              className="h-20 w-96 object-contain select-none"
+              className="h-16 w-auto max-w-[180px] object-contain select-none"
             />
           </NavLink>
 
