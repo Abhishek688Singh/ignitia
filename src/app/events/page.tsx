@@ -190,7 +190,7 @@ const Events = () => {
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-background-secondary sticky top-20 z-30 border-b border-gold/20">
+      <section className="py-8 bg-background-secondary md:sticky md:top-20 z-30 border-b border-gold/20">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
@@ -198,8 +198,8 @@ const Events = () => {
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2.5 rounded-lg font-heading font-semibold transition-all ${selectedCategory === category
-                    ? "bg-gradient-to-r from-neon-cyan to-neon-magenta text-white glow-cyan"
-                    : "bg-card border border-gold/30 text-foreground hover:bg-gold/10 hover:border-gold"
+                  ? "bg-gradient-to-r from-neon-cyan to-neon-magenta text-white glow-cyan"
+                  : "bg-card border border-gold/30 text-foreground hover:bg-gold/10 hover:border-gold"
                   }`}
               >
                 {category}
@@ -230,26 +230,31 @@ const Events = () => {
       </section>
 
 
-    
 
-      
+
+
 
       {/* Events Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {finalEvents.length === 0 ? (
-              <div className="col-span-full text-center py-16 text-xl text-foreground/60">
-                No events found.
-              </div>
-            ) : (
-              finalEvents.map((event, index) => (
-                <EventCard key={index} event={event} index={index} />
-              ))
-            )}
+      <div className="flex flex-col gap-16">
+        {finalEvents.length === 0 ? (
+          <div className="text-center py-16 text-xl text-foreground/60">
+            No events found.
           </div>
-        </div>
-      </section>
+        ) : (
+          finalEvents.map((event, index) => (
+            <div
+              key={index}
+              className="w-full flex justify-center px-4"
+            >
+              <div className="w-full max-w-5xl">
+                <EventCard event={event} index={index} />
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+
 
 
       <Footer />

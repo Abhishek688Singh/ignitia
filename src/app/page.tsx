@@ -72,7 +72,7 @@ const Index = () => {
         </div>
 
         {/* HERO MANDALA */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] opacity-10 animate-rotate-slow">
+        <div className="absolute overflow-hidden top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-[100vw] max-h-[100vw] w-full h-full opacity-10 animate-rotate-slow">
           <Image src={mandalaGold} alt="" className="w-full h-full object-contain" />
         </div>
 
@@ -144,7 +144,7 @@ const Index = () => {
               </div>
 
               {/* FLOATERS */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 hexagon bg-gradient-to-br from-neon-cyan to-neon-magenta animate-float glow-cyan"></div>
+              <div className="hidden md:block absolute -top-6 -right-6 w-24 h-24 hexagon bg-gradient-to-br from-neon-cyan to-neon-magenta animate-float glow-cyan"></div>
               <div className="absolute -bottom-6 -left-6 w-20 h-20 hexagon bg-gradient-to-br from-gold to-gold-light animate-float glow-gold" style={{ animationDelay: "1s" }}></div>
             </div>
           </div>
